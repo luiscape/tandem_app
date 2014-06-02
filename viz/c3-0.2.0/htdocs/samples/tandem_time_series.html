@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link href="/css/c3.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="chart1"></div>
+    <div id="chart2"></div>
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="/js/c3.js"></script>
+    <script>
+
+      var chart1 = c3.generate({
+        bindto: '#chart1',
+        data: {
+          url: '/data/inscritos_dia.csv',
+          types: {
+            Quantidade: 'area-spline'
+          },
+            labels: true,
+            filter: function (t) {
+              return t.id !== 'Dia';
+          },
+        selection: {
+          enabled: true,
+            grouped: true,
+            multiple: true,
+          },
+          onclick: function (d, element) { console.log("onclick", d, element); },
+          onselected: function (d, element) { console.log("onselected", d, element); },
+          onunselected: function (d, element) { console.log("onunselected", d, element); },
+          ondragstart: function () { console.log("ondragstart"); },
+          ondragend: function () { console.log("ondragend"); },
+        }
+      });
+
+    </script>
+  </body>
+</html>
